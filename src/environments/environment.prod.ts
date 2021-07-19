@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverSocket: 'cryptic-dawn-66897.herokuapp.com/'
 };
