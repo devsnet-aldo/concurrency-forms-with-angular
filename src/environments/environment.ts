@@ -6,5 +6,5 @@
 
 export const environment = {
   production: false,
-  serverSocket: 'https://cryptic-dawn-66897.herokuapp.com/'
+  serverSocket: 'cryptic-dawn-66897.herokuapp.com/'
 };
