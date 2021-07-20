@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverSocket: 'wss://cryptic-dawn-66897.herokuapp.com:3000/'
+  serverSocket: 'wss://cryptic-dawn-66897.herokuapp.com/'
 };
