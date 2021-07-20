@@ -1,5 +1,12 @@
 <div class="content">
-  <textarea [(ngModel)]="msg" (keyup)="sendData('message')"></textarea>
+  <div contenteditable="true"
+    name="fieldName" 
+    ngDefaultControl 
+    [innerHTML]="updatable"
+    (keyup)="updateField($event.target)"
+    class="editable">
+    This text can be edited by the user.
+  </div>
 </div>
 
 <router-outlet></router-outlet>

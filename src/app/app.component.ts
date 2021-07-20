@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   user:any;
   user_id:any;
   msg:any;
+  updatable: any;
 
   constructor(
     protected socketService: SocketProviderConnect,
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     socketService.outEvent.subscribe(res => {
       if(res !== this.msg) {
         this.msg = res;
+        this.updatable = res
       }
     });
   }
@@ -47,5 +49,10 @@ export class AppComponent implements OnInit {
     this.socketService.emitEvent(event, {
       message: this.msg
     });
+  }
+
+  updateField = (content:any) => {
+    this.msg = content.innerHTML
+    this.sendData('message')
   }
 }
