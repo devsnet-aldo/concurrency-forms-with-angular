@@ -23,11 +23,12 @@ export class AppComponent implements OnInit {
       if(res !== this.msg) {
         this.msg = res;
         this.updatable = res;
+        console.log('outsvc', this.e, this._cord);
         if(this.e && this._cord) {
-          let offset = this._sel.anchorOffset;
+          let offset = this._cord.offset;
           const range = document.createRange();
-          range.setStart(this._node, offset +1);
-          range.setEnd(this._node, offset +1);
+          range.setStart(this._node, offset);
+          range.setEnd(this._node, offset);
           console.log('changed', offset, range, this._sel);
           this._sel.removeAllRanges();
           this._sel.addRange(range);
@@ -89,7 +90,7 @@ export class AppComponent implements OnInit {
           }
   
         }
-        console.log(this.e, this.e1);  
+        console.log('-->', this.e, this.e1);  
       } catch (error) {
         console.log(error);
       }
