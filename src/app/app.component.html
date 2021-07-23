@@ -9,16 +9,14 @@
       This text can be edited by the user.
     </div>
   -->
-  <div 
+  <span 
     #el 
     contentEditable="true"
     (caret)="onCaret($event)"
     caretTracker [innerHTML]="updatable"
     (keyup)="updateField($event.target)" 
     class="editable">
-    <span class="blink">|</span>
-    <div class="wrapper"></div>
-  </div>
+</span>
 </div>
 
 <router-outlet></router-outlet>
