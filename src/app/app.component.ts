@@ -22,7 +22,10 @@ export class AppComponent implements OnInit {
     socketService.outEvent.subscribe(res => {
       if(res !== this.msg) {
         this.msg = res;
-        this.updatable = res
+        this.updatable = res;
+        if(this.e) {
+          this.e.focus();
+        }
       }
     });
   }
@@ -52,7 +55,33 @@ export class AppComponent implements OnInit {
   }
 
   updateField = (content:any) => {
-    this.msg = content.innerHTML
-    this.sendData('message')
+    this.msg = content.innerHTML;
+    this.sendData('message');
+  }
+
+  e:any;
+  e1:any;
+
+  onCaret(cord: any) {
+    if(cord.offset) {
+      try {
+        console.log("cord", cord.event.pageX, cord.event.pageY);
+        
+
+        if (cord.event.pageX && cord.event.pageY)
+          this.e1 = document.elementFromPoint(cord.event.pageX, cord.event.pageY);
+
+        let selection = document.getSelection();
+        if( selection) {
+          if( selection.anchorNode)
+            this.e = selection.anchorNode.parentElement;
+  
+        }
+        console.log(this.e, this.e1);  
+      } catch (error) {
+        console.log(error);
+      }
+      
+    }
   }
 }

@@ -6,5 +6,5 @@
 
 export const environment = {
   production: false,
-  serverSocket: 'localhost:3000'
+  serverSocket: 'localhost:5000'
 };

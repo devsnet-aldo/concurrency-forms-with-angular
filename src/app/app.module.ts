@@ -5,13 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; 
 
-import { SocketIoModule } from 'ngx-socket-io';
 import { CookieService } from 'ngx-cookie-service';
 import { SocketProviderConnect } from './services/web-socket.service';
+import { ContentEditableDirective } from './directives/content-editable.directive';
+import { CaretTrackerDirective } from './directives/caret-tracker.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContentEditableDirective,
+    CaretTrackerDirective
   ],
   imports: [
     BrowserModule,

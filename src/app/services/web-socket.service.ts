@@ -19,8 +19,10 @@ export class SocketProviderConnect extends Socket {
         }
       }
     });
-    console.log(environment.serverSocket);
-    this.ioSocket.on('message', (res: any) => this.outEvent.emit(res));
+    this.ioSocket.on('message', (res: any) => {
+      console.log('received', res);
+      this.outEvent.emit(res);
+    });
   }
 
   emitEvent = (event = 'default', payload = {}) => {

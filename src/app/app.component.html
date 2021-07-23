@@ -1,11 +1,23 @@
 <div class="content">
-  <div contenteditable="true"
-    name="fieldName" 
-    ngDefaultControl 
-    [innerHTML]="updatable"
-    (keyup)="updateField($event.target)"
+  <!--
+    <div contenteditable="true"
+      name="fieldName" 
+      ngDefaultControl 
+      [innerHTML]="updatable"
+      (keyup)="updateField($event.target)"
+      class="editable">
+      This text can be edited by the user.
+    </div>
+  -->
+  <div 
+    #el 
+    contentEditable="true"
+    (caret)="onCaret($event)"
+    caretTracker [innerHTML]="updatable"
+    (keyup)="updateField($event.target)" 
     class="editable">
-    This text can be edited by the user.
+    <span class="blink">|</span>
+    <div class="wrapper"></div>
   </div>
 </div>
 
