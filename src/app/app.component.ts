@@ -23,8 +23,14 @@ export class AppComponent implements OnInit {
       if(res !== this.msg) {
         this.msg = res;
         this.updatable = res;
-        if(this.e) {
-          this.e.focus();
+        if(this.e && this._cord) {
+          let offset = this._sel.anchorOffset;
+          const range = document.createRange();
+          range.setStart(this._node, offset +1);
+          range.setEnd(this._node, offset +1);
+          console.log('changed', offset, range, this._sel);
+          this._sel.removeAllRanges();
+          this._sel.addRange(range);
         }
       }
     });
@@ -61,8 +67,12 @@ export class AppComponent implements OnInit {
 
   e:any;
   e1:any;
+  _cord:any;
+  _node: any;
+  _sel: any;
 
   onCaret(cord: any) {
+    this._cord = cord;
     if(cord.offset) {
       try {
         console.log("cord", cord.event.pageX, cord.event.pageY);
@@ -71,10 +81,12 @@ export class AppComponent implements OnInit {
         if (cord.event.pageX && cord.event.pageY)
           this.e1 = document.elementFromPoint(cord.event.pageX, cord.event.pageY);
 
-        let selection = document.getSelection();
-        if( selection) {
-          if( selection.anchorNode)
-            this.e = selection.anchorNode.parentElement;
+        this._sel = document.getSelection();
+        if( this._sel) {
+          if( this._sel.anchorNode) {
+            this._node = this._sel.anchorNode;
+            this.e = this._node.parentElement;
+          }
   
         }
         console.log(this.e, this.e1);  
