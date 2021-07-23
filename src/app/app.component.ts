@@ -27,11 +27,18 @@ export class AppComponent implements OnInit {
           let offset = this._cord.offset;
           const range = document.createRange();
           const length = this.e.textContent.length;
-          range.setStart(this.e.childNodes[0], length)
-          range.collapse(true)
+          console.log('-->', this.e.childNodes, length);
+          try {
+            range.setStart(this.e.childNodes[0], length)
+            range.collapse(true)
+            
+            this._sel.removeAllRanges()
+            this._sel.addRange(range)
+
+          } catch(error){
+            console.log(error);
+          }
           
-          this._sel.removeAllRanges()
-          this._sel.addRange(range)
         }
       }
     });
